@@ -1,0 +1,3 @@
+[submodule "homebridge-src"]
+	path = homebridge-src
+	url = https://patrickbusch@github.com/nfarina/homebridge.git
