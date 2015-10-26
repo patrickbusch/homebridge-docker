@@ -15,3 +15,23 @@ Copy `config-sample.json` to `config.json` and adapt to your likings.
 `docker build --tag="patrickbusch/homebridge:0.1-SNAPSHOT" .`
 
 ## Run
+
+### run first time
+
+`docker run -d -p 0.0.0.0:51826:51826 --name homebridge-v0.1-SNAPSHOT patrickbusch/homebridge:0.1-SNAPSHOT`
+
+### stop
+
+`docker stop homebridge-v0.1-SNAPSHOT`
+
+### start
+
+(after stopping)
+
+`docker start homebridge-v0.1-SNAPSHOT`
+
+### remove
+
+(needed before run is possible again)
+
+`docker rm homebridge-v0.1-SNAPSHOT`
