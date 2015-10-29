@@ -1,4 +1,4 @@
-FROM ubuntu:15.04
+FROM debian:jessie
 MAINTAINER Patrick Busch <p@trickbusch.de>
 
 RUN apt-get update
@@ -8,7 +8,6 @@ RUN apt-get update
 ##################################################
 
 # Ensure UTF-8
-RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV TERM xterm
