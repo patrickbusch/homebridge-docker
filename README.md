@@ -10,28 +10,50 @@ This is simply wrapping the source in a runnable Docker image for everyone that 
 
 Copy `config-sample.json` to `config.json` and adapt to your likings.
 
+## Raspberry PI
+
+When building and running on a Raspberry PI, use `homebridge-pi.sh` instead of `homebridge.sh`
+
 ## Build
 
-`docker build --tag="patrickbusch/homebridge:0.1-SNAPSHOT" .`
+`./homebridge.sh build`
 
 ## Run
 
 ### run first time
 
-`docker run -d -p 0.0.0.0:51826:51826 --name homebridge-v0.1-SNAPSHOT patrickbusch/homebridge:0.1-SNAPSHOT`
+`./homebridge.sh run`
 
 ### stop
 
-`docker stop homebridge-v0.1-SNAPSHOT`
+`./homebridge.sh stop`
 
 ### start
 
 (after stopping)
 
-`docker start homebridge-v0.1-SNAPSHOT`
+`./homebridge.sh start`
 
 ### remove
 
 (needed before run is possible again)
 
-`docker rm homebridge-v0.1-SNAPSHOT`
+`./homebridge.sh remove`
+
+### rerun
+
+Stops and removes the containers, then performs run again
+
+`./homebridge.sh rerun`
+
+### attach
+
+Attaches to the running container
+
+`./homebridge.sh attach`
+
+### logs
+
+Diplays stdout log of the running container
+
+`./homebridge.sh logs`

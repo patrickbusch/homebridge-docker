@@ -3,8 +3,8 @@
 BASEDIR=$(dirname $0)
 cd $BASEDIR
 
-VERSION=$(<VERSION)
-FROM=$(<FROM)
-IMAGE_NAME=homebridge-v$VERSION
+VERSION=$(<VERSION-PI)
+FROM=$(<FROM-PI)
+IMAGE_NAME=homebridge-pi-v$VERSION
 
 source homebridge-common.sh
