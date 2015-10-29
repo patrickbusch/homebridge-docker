@@ -25,21 +25,32 @@ RUN useradd --create-home --home-dir /home/app --shell /bin/bash app
 # Install tools                                  #
 ##################################################
 
-RUN apt-get install -y curl git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev
+RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev
 
 
 ##################################################
 # Install node                                   #
 ##################################################
 
-RUN curl -sLf -o /dev/null 'https://deb.nodesource.com/node_0.12/dists/vivid/Release'
-RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo 'deb https://deb.nodesource.com/node_0.12 vivid  main' > /etc/apt/sources.list.d/nodesource.list
-RUN echo 'deb-src https://deb.nodesource.com/node_0.12 vivid  main' >> /etc/apt/sources.list.d/nodesource.list
+#RUN curl -sLf -o /dev/null 'https://deb.nodesource.com/node_0.12/dists/vivid/Release'
+#RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+#RUN echo 'deb https://deb.nodesource.com/node_0.12 vivid  main' > /etc/apt/sources.list.d/nodesource.list
+#RUN echo 'deb-src https://deb.nodesource.com/node_0.12 vivid  main' >> /etc/apt/sources.list.d/nodesource.list
 
+#RUN apt-get update
+#RUN apt-get install -y nodejs
+##RUN ln -s /usr/bin/nodejs /usr/bin/node
+
+
+##################################################
+# Install node on pi                             #
+##################################################
+
+#RUN curl -sLS https://apt.adafruit.com/add | sudo bash
+RUN echo "deb http://apt.adafruit.com/raspbian/ jessie main" >> /etc/apt/sources.list
+RUN wget -O - -q https://apt.adafruit.com/apt.adafruit.com.gpg.key | apt-key add -
 RUN apt-get update
-RUN apt-get install -y nodejs
-#RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN apt-get install -y node
 
 
 ##################################################
