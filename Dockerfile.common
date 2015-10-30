@@ -70,8 +70,19 @@ RUN npm install
 # Start                                          #
 ##################################################
 
+#tmp
+USER root
+#RUN apt-get install -y avahi-daemon
+RUN sed -i "s/#enable-dbus=yes/enable-dbus=yes/" /etc/avahi/avahi-daemon.conf
+USER app
+#tmp
+
 WORKDIR /home/app/homebridge
 
 EXPOSE 51826
 
-CMD ["npm", "run", "start"]
+#CMD ["npm", "run", "start"]
+ADD run.sh /home/app/homebridge/run.sh
+USER root
+CMD ["/home/app/homebridge/run.sh"]
+
