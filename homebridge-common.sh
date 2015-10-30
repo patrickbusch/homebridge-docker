@@ -10,6 +10,8 @@ _build() {
   # Generate Dockerfile
   echo $FROM > Dockerfile
   cat Dockerfile.common >> Dockerfile
+  sed -i '' "/#####SPECIFIC#####/ r $SPECIFIC_FILE" Dockerfile
+
   # Build
   docker build --tag="patrickbusch/homebridge:$VERSION" .
 }
