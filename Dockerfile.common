@@ -25,8 +25,8 @@ RUN useradd --create-home --home-dir /home/app --shell /bin/bash app
 # Install tools                                  #
 ##################################################
 
-RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev
-
+RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev vim
+RUN alias ll='ls -alG'
 
 #####SPECIFIC#####
 
@@ -48,13 +48,6 @@ RUN npm install
 # Start                                          #
 ##################################################
 
-#tmp
-USER root
-#RUN apt-get install -y avahi-daemon
-RUN sed -i "s/#enable-dbus=yes/enable-dbus=yes/" /etc/avahi/avahi-daemon.conf
-USER app
-#tmp
-
 WORKDIR /home/app/homebridge
 
 EXPOSE 51826
@@ -64,6 +57,3 @@ ADD run.sh /home/app/homebridge/run.sh
 USER root
 CMD ["/home/app/homebridge/run.sh"]
 
-
-#RUN apt-get install vim
-#RUN alias ll='ls -alG'
