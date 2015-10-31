@@ -64,3 +64,6 @@ ADD run.sh /home/app/homebridge/run.sh
 USER root
 CMD ["/home/app/homebridge/run.sh"]
 
+
+#RUN apt-get install vim
+#RUN alias ll='ls -alG'
