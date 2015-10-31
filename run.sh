@@ -1,8 +1,8 @@
 #!/bin/bash
 
+sed -i "s/#enable-dbus=yes/enable-dbus=yes/" /etc/avahi/avahi-daemon.conf
 mkdir /var/run/dbus
 dbus-daemon --system
 avahi-daemon -D
 
-runuser -l app -c 'npm run start'
-
+runuser -l app -c 'd /home/app/homebridge && npm run start'
