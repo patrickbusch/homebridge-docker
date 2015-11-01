@@ -25,7 +25,7 @@ RUN useradd --create-home --home-dir /home/app --shell /bin/bash app
 # Install tools                                  #
 ##################################################
 
-RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev vim
+RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev libkrb5-dev vim
 RUN alias ll='ls -alG'
 
 #####SPECIFIC#####
