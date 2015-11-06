@@ -25,7 +25,7 @@ RUN useradd --create-home --home-dir /home/app --shell /bin/bash app
 # Install tools                                  #
 ##################################################
 
-RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev libkrb5-dev vim
+RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev libkrb5-dev vim net-tools
 RUN alias ll='ls -alG'
 
 #####SPECIFIC#####
@@ -48,12 +48,18 @@ RUN npm install
 # Start                                          #
 ##################################################
 
+USER root
 WORKDIR /home/app/homebridge
 
-EXPOSE 51826
+#RUN mkdir -p /var/run/dbus
+#VOLUME /var/run/dbus
+
+EXPOSE 5353 51826
 
 #CMD ["npm", "run", "start"]
 ADD run.sh /home/app/homebridge/run.sh
-USER root
 CMD ["/home/app/homebridge/run.sh"]
 
+
+#ENV DEBIAN_FRONTEND noninteractive
+#RUN locale-gen en_US.UTF-8
