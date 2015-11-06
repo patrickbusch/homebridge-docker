@@ -9,8 +9,11 @@ RUN apt-get update
 ##################################################
 
 # Ensure UTF-8
+RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+
+ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 
 
@@ -51,7 +54,7 @@ RUN npm install
 USER root
 WORKDIR /home/app/homebridge
 
-#RUN mkdir -p /var/run/dbus
+RUN mkdir -p /var/run/dbus
 #VOLUME /var/run/dbus
 
 EXPOSE 5353 51826
@@ -60,6 +63,3 @@ EXPOSE 5353 51826
 ADD run.sh /home/app/homebridge/run.sh
 CMD ["/home/app/homebridge/run.sh"]
 
-
-#ENV DEBIAN_FRONTEND noninteractive
-#RUN locale-gen en_US.UTF-8
