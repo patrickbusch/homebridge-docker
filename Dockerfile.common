@@ -37,21 +37,26 @@ RUN alias ll='ls -alG'
 # Install homebridge                             #
 ##################################################
 
-ADD homebridge-src /home/app/homebridge
-ADD config.json /home/app/homebridge/config.json
-RUN chown -R app:app /home/app/homebridge
+#ADD homebridge-src /home/app/homebridge
+#ADD config.json /home/app/homebridge/config.json
+#RUN chown -R app:app /home/app/homebridge
 
-WORKDIR /home/app/homebridge
-USER app
-RUN npm install
+#WORKDIR /home/app/homebridge
+#USER app
+#RUN npm install
 
+RUN npm install -g homebridge
+RUN npm install -g homebridge-legacy-plugins 
+
+RUN mkdir /home/app/.homebridge
+ADD config.json /home/app/.homebridge/config.json
 
 ##################################################
 # Start                                          #
 ##################################################
 
 USER root
-WORKDIR /home/app/homebridge
+#WORKDIR /home/app/homebridge
 
 RUN mkdir -p /var/run/dbus
 #VOLUME /var/run/dbus
