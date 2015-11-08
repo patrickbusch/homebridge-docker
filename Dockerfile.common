@@ -46,7 +46,7 @@ RUN alias ll='ls -alG'
 #RUN npm install
 
 RUN npm install -g homebridge
-RUN npm install -g homebridge-legacy-plugins 
+RUN npm install -g homebridge-harmonyhub
 
 RUN mkdir /home/app/.homebridge
 ADD config.json /home/app/.homebridge/config.json
