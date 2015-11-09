@@ -20,7 +20,7 @@ ENV TERM xterm
 # Add app user                                   #
 ##################################################
 
-RUN useradd --create-home --home-dir /home/app --shell /bin/bash app
+#RUN useradd --create-home --home-dir /home/app --shell /bin/bash app
 
 
 ##################################################
@@ -48,8 +48,8 @@ RUN alias ll='ls -alG'
 RUN npm install -g homebridge
 RUN npm install -g homebridge-harmonyhub
 
-RUN mkdir /home/app/.homebridge
-ADD config.json /home/app/.homebridge/config.json
+RUN mkdir /root/.homebridge
+ADD config.json /root/.homebridge/config.json
 
 ##################################################
 # Start                                          #
@@ -64,6 +64,6 @@ RUN mkdir -p /var/run/dbus
 EXPOSE 5353 51826
 
 #CMD ["npm", "run", "start"]
-ADD run.sh /home/app/homebridge/run.sh
-CMD ["/home/app/homebridge/run.sh"]
+ADD run.sh /root/run.sh
+CMD ["/root/run.sh"]
 
