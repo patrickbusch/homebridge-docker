@@ -48,9 +48,6 @@ RUN alias ll='ls -alG'
 RUN npm install -g homebridge
 RUN npm install -g homebridge-harmonyhub
 
-RUN mkdir /root/.homebridge
-ADD config.json /root/.homebridge/config.json
-
 ##################################################
 # Start                                          #
 ##################################################
@@ -65,5 +62,9 @@ EXPOSE 5353 51826
 
 #CMD ["npm", "run", "start"]
 ADD run.sh /root/run.sh
+
+RUN mkdir /root/.homebridge
+ADD config.json /root/.homebridge/config.json
+
 CMD ["/root/run.sh"]
 
