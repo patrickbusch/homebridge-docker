@@ -18,7 +18,7 @@ _build() {
 
 _run() {
   # Run (first time)
-  docker run -d -p 0.0.0.0:51826:51826 -v /root/.homebridge --net=host --name $IMAGE_NAME patrickbusch/homebridge:$VERSION
+  docker run -d -p 0.0.0.0:51826:51826 -v /etc/homebridge:/root/.homebridge --net=host --name $IMAGE_NAME patrickbusch/homebridge:$VERSION
 }
 
 _stop() {
