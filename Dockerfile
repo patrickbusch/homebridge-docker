@@ -60,8 +60,8 @@ RUN alias ll='ls -alG'
 #USER app
 #RUN npm install
 
-RUN npm install -g homebridge
-RUN npm install -g homebridge-httpeverything
+RUN npm install -g homebridge@0.4.8
+RUN npm install -g homebridge-httpeverything@0.1.33
 
 ##################################################
 # Start                                          #
