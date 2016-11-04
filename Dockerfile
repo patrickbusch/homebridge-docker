@@ -1,4 +1,4 @@
-#FROM debian:jessie
+FROM debian:jessie
 #FROM resin/rpi-raspbian:jessie
 MAINTAINER Patrick Busch <p@trickbusch.de>
 
