@@ -79,7 +79,8 @@ EXPOSE 5353 51826
 ADD run.sh /root/run.sh
 
 RUN mkdir /root/.homebridge
-ADD config.json /root/.homebridge/config.json
+#ADD config.json /root/.homebridge/config.json
+COPY config.json /root/.homebridge/config.json
 
 CMD ["/root/run.sh"]
 
