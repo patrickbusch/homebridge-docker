@@ -81,6 +81,7 @@ ADD run.sh /root/run.sh
 RUN mkdir /root/.homebridge
 #ADD config.json /root/.homebridge/config.json
 COPY config.json /root/.homebridge/config.json
+RUN cd /root/.homebridge && ls
 
 CMD ["/root/run.sh"]
 
