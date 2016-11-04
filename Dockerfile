@@ -84,4 +84,3 @@ COPY config.json /root/.homebridge/config.json
 RUN cd /root/.homebridge && ls
 
 CMD ["/root/run.sh"]
-
