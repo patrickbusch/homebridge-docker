@@ -1,8 +1,11 @@
 #FROM debian:jessie
 #FROM resin/rpi-raspbian:jessie
+FROM node:6.5.0
 MAINTAINER Patrick Busch <p@trickbusch.de>
 
 RUN apt-get update
+
+
 
 ##################################################
 # Set environment variables                      #
@@ -32,6 +35,18 @@ RUN alias ll='ls -alG'
 
 #####SPECIFIC#####
 
+##################################################
+# Install node                                   #
+##################################################
+
+#RUN curl -sLf -o /dev/null 'https://deb.nodesource.com/node_0.12/dists/vivid/Release'
+#RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+#RUN echo 'deb https://deb.nodesource.com/node_0.12 vivid  main' > /etc/apt/sources.list.d/nodesource.list
+#RUN echo 'deb-src https://deb.nodesource.com/node_0.12 vivid  main' >> /etc/apt/sources.list.d/nodesource.list
+
+#RUN apt-get update
+#RUN apt-get install -y nodejs
+#RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 ##################################################
 # Install homebridge                             #
@@ -45,8 +60,8 @@ RUN alias ll='ls -alG'
 #USER app
 #RUN npm install
 
-RUN npm install -g homebridge
-RUN npm install -g homebridge-openhab
+RUN npm install -g homebridge@0.4.8
+RUN npm install -g homebridge-httpeverything@0.1.33
 
 ##################################################
 # Start                                          #
@@ -64,7 +79,8 @@ EXPOSE 5353 51826
 ADD run.sh /root/run.sh
 
 RUN mkdir /root/.homebridge
-ADD config.json /root/.homebridge/config.json
+#ADD config.json /root/.homebridge/config.json
+COPY config.json /root/.homebridge/config.json
+RUN cd /root/.homebridge && ls
 
 CMD ["/root/run.sh"]
-
